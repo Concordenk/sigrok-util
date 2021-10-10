@@ -45,7 +45,7 @@ export CC=gcc
 export CXX=g++
 
 # We use Qt 5.5 in order to remain compatible with more versions of Mac OS X.
-QTVER=qt@5.5
+QTVER=qt@5
 
 # Path to Qt5 binaries (needed for cmake to find the Qt5 libs).
 export PATH="$(brew --prefix $QTVER)/bin:$PATH"
@@ -57,7 +57,7 @@ export PATH="$(brew --prefix $QTVER)/bin:$PATH"
 # PKG_CONFIG_PATH will need to point to pkg-config files of Homebrew's
 # keg-only formulae.
 P="$PREFIX/lib/pkgconfig"
-for FORMULA in libffi python@2 python@3 "$QTVER"; do
+for FORMULA in libffi python@3 "$QTVER"; do
     P="$P:$(brew --prefix "$FORMULA")/lib/pkgconfig"
 done
 
@@ -71,6 +71,8 @@ cd $BUILDDIR
 
 GIT_CLONE="git clone --depth=1"
 
+REPOMY_BASE="git://github.com/Concordenk"
+REPOMY_BRANCH="--branch xlink"
 REPO_BASE="git://sigrok.org"
 
 # -----------------------------------------------------------------------------
@@ -88,7 +90,7 @@ cd ../..
 
 # libsigrok
 mkdir -p $PYPATH
-$GIT_CLONE $REPO_BASE/libsigrok
+$GIT_CLON $REPOMY_BRANCH $REPOMY_BASE/libsigrok
 cd libsigrok
 ./autogen.sh
 mkdir build
@@ -146,7 +148,7 @@ make install $V
 cd ../..
 
 # PulseView
-$GIT_CLONE $REPO_BASE/pulseview
+$GIT_CLONE $REPOMY_BRANCH $REPOMY_BASE/pulseview
 cd pulseview
 mkdir build
 cd build
