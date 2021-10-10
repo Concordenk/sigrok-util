@@ -90,7 +90,7 @@ cd ../..
 
 # libsigrok
 mkdir -p $PYPATH
-$GIT_CLON $REPOMY_BRANCH $REPOMY_BASE/libsigrok
+$GIT_CLONE $REPOMY_BRANCH $REPOMY_BASE/libsigrok
 cd libsigrok
 ./autogen.sh
 mkdir build
