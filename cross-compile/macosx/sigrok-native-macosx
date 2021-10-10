@@ -57,7 +57,7 @@ export PATH="$(brew --prefix $QTVER)/bin:$PATH"
 # PKG_CONFIG_PATH will need to point to pkg-config files of Homebrew's
 # keg-only formulae.
 P="$PREFIX/lib/pkgconfig"
-for FORMULA in libffi python@3 "$QTVER"; do
+for FORMULA in libffi libusb python@3 "$QTVER"; do
     P="$P:$(brew --prefix "$FORMULA")/lib/pkgconfig"
 done
 
